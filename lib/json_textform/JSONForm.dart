@@ -228,6 +228,8 @@ class _JSONSchemaFormState extends State<JSONForm> {
             });
           },
         );
+      case WidgetType.simpleText :
+        return Text(schema.label);
       case WidgetType.checkbox:
         return JSONCheckboxField(
           schema: schema,
