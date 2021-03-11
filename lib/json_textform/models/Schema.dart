@@ -29,6 +29,9 @@ class Schema {
   /// Set this value only if the field includes selection
   Choice choice;
 
+  /// set dynamic list options
+  List<dynamic> options;
+
   /// List of choices. Set this value only if you are using many to many field;
   List<Choice> choices;
 
@@ -51,6 +54,7 @@ class Schema {
     this.value,
     this.action,
     this.choice,
+    this.options,
     this.icon,
     this.choices = const [],
   });
@@ -146,6 +150,7 @@ class Schema {
       widget: _widgetType,
       isRequired: json['required'],
       validation: Validation.fromJSON(json['validations']),
+      options: json['options']
     );
   }
 
@@ -158,7 +163,6 @@ class Schema {
         return {'key': this.name, 'value': (value as FileFieldValue).value};
       }
     }
-
     return {'key': this.name, 'value': this.value};
   }
 }
