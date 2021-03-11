@@ -9,4 +9,5 @@ enum WidgetType {
   manytomanyLists,
   file,
   url,
+  simpleText,
 }
