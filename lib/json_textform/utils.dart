@@ -1,4 +1,5 @@
 import 'package:json_schema_form/json_textform/models/Schema.dart';
+import 'dart:convert';
 
 String getURL(String base, String path) {
   return "$base/$path";
@@ -15,10 +16,8 @@ Map<String, dynamic> getSubmitJSON(List<Schema> schemaList) {
       .map((schema) => schema.onSubmit())
       .where((schema) => schema != null)
       .toList();
-  Map<String, dynamic> ret = Map.fromIterables(
-      json.map((j) => j['key'] as String).toList(),
-      json.map((j) {
-        return j['value'];
-      }).toList());
+  var data = jsonEncode(json);
+  Map<String, dynamic> ret =
+  {'data' : data};
   return ret;
 }
