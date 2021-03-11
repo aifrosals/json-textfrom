@@ -31,22 +31,20 @@ class _JSONDateTimeFieldState extends State<JSONDateTimeField> {
     init();
   }
 
-  @override
-  void didUpdateWidget(JSONDateTimeField oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    init();
-  }
+  // @override
+  // void didUpdateWidget(JSONDateTimeField oldWidget) {
+  //   super.didUpdateWidget(oldWidget);
+  //   init();
+  // }
 
   void init() {
-    String value = widget.schema.value ??
-        widget.schema.extra?.defaultValue?.toString() ??
-        "${DateTime.now().toString()}";
+    String value = widget.schema.value ?? "${DateTime.now().toString()}";
     dateTime = DateTime.parse(value);
     _controller = TextEditingController(
         text: "${dateTime.year}-${dateTime.month}-${dateTime.day}");
-    _controller.addListener(() {
-      _controller.text = "${dateTime.year}-${dateTime.month}-${dateTime.day}";
-    });
+    // _controller.addListener(() {
+    //   _controller.text = "${dateTime.year}-${dateTime.month}-${dateTime.day}";
+    // });
   }
 
   @override
@@ -72,6 +70,7 @@ class _JSONDateTimeFieldState extends State<JSONDateTimeField> {
           },
           key: Key("datetimefield"),
           controller: _controller,
+          readOnly: true,
           decoration: InputDecoration(
             filled: widget.filled,
             helperText: widget.schema.extra?.helpText,
